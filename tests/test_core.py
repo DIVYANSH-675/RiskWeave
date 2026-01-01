@@ -57,3 +57,15 @@ def test_transition_perturbations_preserve_environment_geometry():
         neighbors[..., :2] + neighbors[..., 2:4], torch.full((1, 16, 2), 0.8)
     )
     torch.testing.assert_close(neighbors[..., 4], torch.ones(1, 16))
+
+
+def test_capacity_rejects_accidental_batch_broadcasting():
+    import pytest
+
+    with pytest.raises(ValueError, match="one value per batch row"):
+        upper_choquet(torch.ones(1, 3), torch.ones(2))
+    with pytest.raises(ValueError, match="nonempty"):
+        upper_choquet(torch.empty(0, 3), torch.ones(1))
+    values = torch.tensor([[1.0, 2.0], [3.0, 4.0]])
+    torch.testing.assert_close(upper_choquet(values, torch.tensor(1.0)), values.mean(1))
+    torch.testing.assert_close(upper_choquet(values, torch.ones(2)), values.mean(1))

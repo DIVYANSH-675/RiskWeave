@@ -7,8 +7,10 @@ from torch import nn
 
 def upper_choquet(values, power):
     """Choquet integral for the normalized capacity mu(A)=(|A|/K)**power."""
-    if values.ndim != 2 or values.shape[1] < 1:
+    if values.ndim != 2 or min(values.shape) < 1:
         raise ValueError("values must be a nonempty BxK tensor")
+    if power.ndim > 1 or power.numel() not in (1, values.shape[0]):
+        raise ValueError("power must be a scalar or a vector with one value per batch row")
     if not torch.isfinite(values).all() or not torch.isfinite(power).all() or (power <= 0).any():
         raise ValueError("Finite values and positive powers are required")
     k = values.shape[1]
