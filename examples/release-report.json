@@ -1,0 +1,426 @@
+{
+  "episodes": [
+    {
+      "noise": 0.0,
+      "seed": 101,
+      "reward": 1.345934717398183,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.0,
+      "seed": 102,
+      "reward": 1.377356835128216,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.0,
+      "seed": 103,
+      "reward": 1.3869458924510354,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.0,
+      "seed": 104,
+      "reward": 1.3903091620368726,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.0,
+      "seed": 105,
+      "reward": 1.3313015044906245,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.0,
+      "seed": 106,
+      "reward": 1.3681347595145419,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.0,
+      "seed": 107,
+      "reward": 1.3390560797381272,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.0,
+      "seed": 108,
+      "reward": 1.355688140209427,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.0,
+      "seed": 109,
+      "reward": 1.4030535383675202,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.0,
+      "seed": 110,
+      "reward": 1.3480339654920994,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.0,
+      "seed": 111,
+      "reward": 1.3871414971114269,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.0,
+      "seed": 112,
+      "reward": 1.384483932661324,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.0,
+      "seed": 113,
+      "reward": 1.4255626768192042,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.0,
+      "seed": 114,
+      "reward": 1.3776425135281176,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.0,
+      "seed": 115,
+      "reward": 1.37288819473561,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.0,
+      "seed": 116,
+      "reward": 1.3901905273946995,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.0,
+      "seed": 117,
+      "reward": 1.3745097237219934,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.0,
+      "seed": 118,
+      "reward": 1.4163982861080064,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.0,
+      "seed": 119,
+      "reward": 1.39986413863972,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.0,
+      "seed": 120,
+      "reward": 1.390431814302673,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.03,
+      "seed": 101,
+      "reward": 1.3174091046024428,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.03,
+      "seed": 102,
+      "reward": 2.940526962634806,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.03,
+      "seed": 103,
+      "reward": 1.394213035034169,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.03,
+      "seed": 104,
+      "reward": 2.9160087010286286,
+      "cost": 4.0,
+      "violation": true
+    },
+    {
+      "noise": 0.03,
+      "seed": 105,
+      "reward": 2.8590891251659207,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.03,
+      "seed": 106,
+      "reward": 1.3756733440862896,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.03,
+      "seed": 107,
+      "reward": 1.3658314693741722,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.03,
+      "seed": 108,
+      "reward": 1.3011364731270374,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.03,
+      "seed": 109,
+      "reward": 1.438814661021636,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.03,
+      "seed": 110,
+      "reward": 2.8846805518963374,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.03,
+      "seed": 111,
+      "reward": 1.3870216300125282,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.03,
+      "seed": 112,
+      "reward": 2.9112210077380274,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.03,
+      "seed": 113,
+      "reward": 2.904212784438103,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.03,
+      "seed": 114,
+      "reward": 2.8763854280951646,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.03,
+      "seed": 115,
+      "reward": 1.3820660924559,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.03,
+      "seed": 116,
+      "reward": 2.897833353453456,
+      "cost": 5.0,
+      "violation": true
+    },
+    {
+      "noise": 0.03,
+      "seed": 117,
+      "reward": 1.3748215200303227,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.03,
+      "seed": 118,
+      "reward": 1.3409058271001164,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.03,
+      "seed": 119,
+      "reward": 1.3981048906457854,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.03,
+      "seed": 120,
+      "reward": 2.978489882206083,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.08,
+      "seed": 101,
+      "reward": 1.1186387199229735,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.08,
+      "seed": 102,
+      "reward": 2.8638487928189935,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.08,
+      "seed": 103,
+      "reward": 1.395783580894607,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.08,
+      "seed": 104,
+      "reward": 2.9297314269017667,
+      "cost": 4.0,
+      "violation": true
+    },
+    {
+      "noise": 0.08,
+      "seed": 105,
+      "reward": 1.3544801627168415,
+      "cost": 1.0,
+      "violation": false
+    },
+    {
+      "noise": 0.08,
+      "seed": 106,
+      "reward": 1.4245451410124708,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.08,
+      "seed": 107,
+      "reward": 2.9022116125229123,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.08,
+      "seed": 108,
+      "reward": 1.1990533561290864,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.08,
+      "seed": 109,
+      "reward": 1.3561886885581944,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.08,
+      "seed": 110,
+      "reward": 2.9145185153837927,
+      "cost": 2.0,
+      "violation": false
+    },
+    {
+      "noise": 0.08,
+      "seed": 111,
+      "reward": 1.378223683199384,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.08,
+      "seed": 112,
+      "reward": 2.8974864175296338,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.08,
+      "seed": 113,
+      "reward": 2.9608380704766093,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.08,
+      "seed": 114,
+      "reward": 2.9491327289603095,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.08,
+      "seed": 115,
+      "reward": 1.5640856051713212,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.08,
+      "seed": 116,
+      "reward": 1.1775287010657063,
+      "cost": 10.0,
+      "violation": true
+    },
+    {
+      "noise": 0.08,
+      "seed": 117,
+      "reward": 1.348134347715083,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.08,
+      "seed": 118,
+      "reward": 2.995605014005138,
+      "cost": 0.0,
+      "violation": false
+    },
+    {
+      "noise": 0.08,
+      "seed": 119,
+      "reward": 2.9445585147447777,
+      "cost": 4.0,
+      "violation": true
+    },
+    {
+      "noise": 0.08,
+      "seed": 120,
+      "reward": 2.9690592933194218,
+      "cost": 0.0,
+      "violation": false
+    }
+  ],
+  "budget": 2.0,
+  "mean_cost": 0.5
+}
