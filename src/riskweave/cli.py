@@ -4,6 +4,7 @@ import json
 import numpy as np
 import torch
 
+from . import __version__
 from .core import Agent, Navigation, collect, optimize, update_penalty
 from .io import seed_all, start_run, write_json
 
@@ -80,6 +81,7 @@ def main():
     p = argparse.ArgumentParser(
         description="RiskWeave: fuzzy-capacity constrained policy experiments"
     )
+    p.add_argument("--version", action="version", version="riskweave " + __version__)
     p.add_argument("command", choices=["train", "evaluate"])
     p.add_argument("--output", default=None)
     p.add_argument("--checkpoint")
