@@ -64,6 +64,21 @@ CI runs the suite on Python 3.10 and 3.12. Small synthetic runs validate softwar
 
 This is a small constrained-learning experiment, not a reproduction of Fuz-RL, a certified safe controller, or a result on Safety-Gymnasium. It uses a cardinality power capacity and a learned Bellman regularizer. No theoretical robustness guarantee is established. Short runs are workflow checks; compare multiple seeds and budgets before interpreting outcomes. The toy navigation task can avoid costs simply by failing to move, so reward and violations must be assessed together.
 
+## Calling the risk aggregator
+
+`upper_choquet(values, power)` expects a nonempty `[batch, samples]` tensor. Supply either a scalar power shared by the batch or a one-dimensional tensor with exactly one power per row. Values must be finite, and powers must be finite and positive.
+
+```python
+import torch
+from riskweave.core import upper_choquet
+
+values = torch.tensor([[1.0, 2.0], [3.0, 4.0]])
+shared = upper_choquet(values, torch.tensor(1.0))  # tensor([1.5, 3.5])
+per_state = upper_choquet(values, torch.tensor([0.5, 0.8]))
+```
+
+A batch containing one state cannot be paired with multiple powers: this now raises `ValueError` instead of silently producing extra output rows. An empty state batch also raises `ValueError`.
+
 ## License
 
 The original code in this repository is MIT licensed, copyright 2026 Divyansh Gupta. See [LICENSE](LICENSE). The cited paper is a separate work; this code's license does not relicense the paper or external datasets.
