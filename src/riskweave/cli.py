@@ -14,7 +14,7 @@ def train(a):
     config = vars(a).copy()
     output = start_run(a.output, config)
     agent = Agent()
-    optimizer = torch.optim.Adam(agent.parameters(), lr=3e-4)
+    optimizer = torch.optim.Adam(agent.parameters(), lr=a.learning_rate)
     env = Navigation(a.seed, a.noise, a.horizon)
     penalty = 1.0
     with (output / "metrics.jsonl").open("w") as stream:
@@ -85,6 +85,7 @@ def main():
     p.add_argument("command", choices=["train", "evaluate"])
     p.add_argument("--output", default=None)
     p.add_argument("--checkpoint")
+    p.add_argument("--learning-rate", type=float, default=3e-4)
     p.add_argument("--seed", type=int, default=7)
     p.add_argument("--episodes", type=int, default=12)
     p.add_argument("--horizon", type=int, default=32)
@@ -92,6 +93,8 @@ def main():
     p.add_argument("--noise", type=float, default=0.0)
     p.add_argument("--noise-grid", type=float, nargs="+", default=[0.0, 0.03, 0.08])
     a = p.parse_args()
+    if not np.isfinite(a.learning_rate) or a.learning_rate <= 0:
+        p.error("learning-rate must be finite and positive")
     a.output = a.output or (
         "runs/report.json"
         if a.command == "evaluate"
