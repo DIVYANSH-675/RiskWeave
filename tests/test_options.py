@@ -22,3 +22,12 @@ def test_learning_rate_validation(monkeypatch):
     assert parse_training(monkeypatch, learning_rate=0.002)["learning_rate"] == 0.002
     with pytest.raises(SystemExit):
         parse_training(monkeypatch, learning_rate="nan")
+
+
+def test_uncertainty_options(monkeypatch):
+    args = parse_training(monkeypatch, radius=0, samples=3)
+    assert args["radius"] == 0 and args["samples"] == 3
+    with pytest.raises(SystemExit):
+        parse_training(monkeypatch, samples=0)
+    with pytest.raises(SystemExit):
+        parse_training(monkeypatch, radius=-0.1)
