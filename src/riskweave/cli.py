@@ -16,7 +16,7 @@ def train(a):
     agent = Agent()
     optimizer = torch.optim.Adam(agent.parameters(), lr=a.learning_rate)
     env = Navigation(a.seed, a.noise, a.horizon)
-    optimizer_options = dict(radius=a.radius, samples=a.samples)
+    optimizer_options = dict(radius=a.radius, samples=a.samples, gamma=a.gamma)
     penalty = 1.0
     with (output / "metrics.jsonl").open("w") as stream:
         for episode in range(a.episodes):
@@ -91,11 +91,14 @@ def main():
     p.add_argument("--episodes", type=int, default=12)
     p.add_argument("--horizon", type=int, default=32)
     p.add_argument("--budget", type=float, default=2.0)
+    p.add_argument("--gamma", type=float, default=0.97)
     p.add_argument("--radius", type=float, default=0.08)
     p.add_argument("--samples", type=int, default=8)
     p.add_argument("--noise", type=float, default=0.0)
     p.add_argument("--noise-grid", type=float, nargs="+", default=[0.0, 0.03, 0.08])
     a = p.parse_args()
+    if not 0 <= a.gamma <= 1:
+        p.error("gamma must be in [0,1]")
     if not np.isfinite(a.radius) or a.radius < 0 or a.samples < 1:
         p.error("radius must be finite and nonnegative; samples must be positive")
     if not np.isfinite(a.learning_rate) or a.learning_rate <= 0:

@@ -31,3 +31,9 @@ def test_uncertainty_options(monkeypatch):
         parse_training(monkeypatch, samples=0)
     with pytest.raises(SystemExit):
         parse_training(monkeypatch, radius=-0.1)
+
+
+def test_discount_option(monkeypatch):
+    assert parse_training(monkeypatch, gamma=0)["gamma"] == 0
+    with pytest.raises(SystemExit):
+        parse_training(monkeypatch, gamma=1.01)
