@@ -17,13 +17,13 @@ def train(a):
     optimizer = torch.optim.Adam(agent.parameters(), lr=a.learning_rate)
     env = Navigation(a.seed, a.noise, a.horizon)
     optimizer_options = dict(radius=a.radius, samples=a.samples, gamma=a.gamma)
-    penalty = 1.0
+    penalty = a.initial_penalty
     with (output / "metrics.jsonl").open("w") as stream:
         for episode in range(a.episodes):
             data = collect(agent, env)
             metrics = optimize(agent, optimizer, data, penalty, **optimizer_options)
             cost = float(data["costs"].sum())
-            penalty = update_penalty(penalty, cost, a.budget, 0.05)
+            penalty = update_penalty(penalty, cost, a.budget, a.penalty_rate)
             row = dict(
                 episode=episode,
                 reward=float(data["rewards"].sum()),
@@ -90,6 +90,8 @@ def main():
     p.add_argument("--seed", type=int, default=7)
     p.add_argument("--episodes", type=int, default=12)
     p.add_argument("--horizon", type=int, default=32)
+    p.add_argument("--penalty-rate", type=float, default=0.05)
+    p.add_argument("--initial-penalty", type=float, default=1.0)
     p.add_argument("--budget", type=float, default=2.0)
     p.add_argument("--gamma", type=float, default=0.97)
     p.add_argument("--radius", type=float, default=0.08)
@@ -97,6 +99,8 @@ def main():
     p.add_argument("--noise", type=float, default=0.0)
     p.add_argument("--noise-grid", type=float, nargs="+", default=[0.0, 0.03, 0.08])
     a = p.parse_args()
+    if any(not np.isfinite(v) or v < 0 for v in (a.penalty_rate, a.initial_penalty)):
+        p.error("penalty-rate and initial-penalty must be finite and nonnegative")
     if not 0 <= a.gamma <= 1:
         p.error("gamma must be in [0,1]")
     if not np.isfinite(a.radius) or a.radius < 0 or a.samples < 1:

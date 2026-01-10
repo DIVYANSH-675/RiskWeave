@@ -37,3 +37,10 @@ def test_discount_option(monkeypatch):
     assert parse_training(monkeypatch, gamma=0)["gamma"] == 0
     with pytest.raises(SystemExit):
         parse_training(monkeypatch, gamma=1.01)
+
+
+def test_constraint_multiplier_options(monkeypatch):
+    args = parse_training(monkeypatch, penalty_rate=0, initial_penalty=2)
+    assert args["penalty_rate"] == 0 and args["initial_penalty"] == 2
+    with pytest.raises(SystemExit):
+        parse_training(monkeypatch, initial_penalty=-1)
