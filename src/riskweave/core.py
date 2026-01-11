@@ -191,3 +191,22 @@ def optimize(agent, optimizer, data, penalty, *, gamma=0.97, radius=0.08, sample
             capacity_loss=float(capacity_loss.detach()),
         )
     return final
+
+
+def summarize_episodes(records):
+    """Keep each transition-noise condition separate in evaluation reports."""
+    if not records:
+        raise ValueError("At least one evaluation episode is required")
+    groups = []
+    for noise in sorted({row["noise"] for row in records}):
+        rows = [row for row in records if row["noise"] == noise]
+        groups.append(
+            dict(
+                noise=noise,
+                episodes=len(rows),
+                mean_reward=float(np.mean([row["reward"] for row in rows])),
+                mean_cost=float(np.mean([row["cost"] for row in rows])),
+                violation_rate=float(np.mean([row["violation"] for row in rows])),
+            )
+        )
+    return groups

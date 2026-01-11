@@ -69,3 +69,17 @@ def test_capacity_rejects_accidental_batch_broadcasting():
     values = torch.tensor([[1.0, 2.0], [3.0, 4.0]])
     torch.testing.assert_close(upper_choquet(values, torch.tensor(1.0)), values.mean(1))
     torch.testing.assert_close(upper_choquet(values, torch.ones(2)), values.mean(1))
+
+
+def test_noise_conditions_are_summarized_separately():
+    from riskweave.core import summarize_episodes
+
+    report = summarize_episodes(
+        [
+            dict(noise=0.0, reward=1.0, cost=0.0, violation=False),
+            dict(noise=0.1, reward=3.0, cost=2.0, violation=True),
+            dict(noise=0.1, reward=1.0, cost=0.0, violation=False),
+        ]
+    )
+    assert report[0]["episodes"] == 1
+    assert report[1]["mean_reward"] == 2 and report[1]["violation_rate"] == 0.5

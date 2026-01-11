@@ -5,7 +5,7 @@ import numpy as np
 import torch
 
 from . import __version__
-from .core import Agent, Navigation, collect, optimize, update_penalty
+from .core import Agent, Navigation, collect, optimize, summarize_episodes, update_penalty
 from .io import seed_all, start_run, write_json
 
 
@@ -71,6 +71,7 @@ def evaluate(a):
         a.output,
         dict(
             episodes=records,
+            by_noise=summarize_episodes(records),
             budget=a.budget,
             mean_cost=float(np.mean([r["cost"] for r in records])),
         ),
