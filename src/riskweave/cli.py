@@ -26,6 +26,8 @@ def train(a):
             penalty = update_penalty(penalty, cost, a.budget, a.penalty_rate)
             row = dict(
                 episode=episode,
+                steps=env.steps,
+                success=bool(np.linalg.norm(env.goal - env.position) < 0.12),
                 reward=float(data["rewards"].sum()),
                 cost=cost,
                 penalty=penalty,
@@ -61,6 +63,8 @@ def evaluate(a):
             records.append(
                 dict(
                     noise=noise,
+                    steps=env.steps,
+                    success=bool(np.linalg.norm(env.goal - env.position) < 0.12),
                     seed=a.seed + index,
                     reward=reward,
                     cost=cost,
