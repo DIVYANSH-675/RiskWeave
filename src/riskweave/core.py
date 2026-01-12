@@ -37,7 +37,7 @@ class Navigation:
     """Finite-horizon point navigation around a circular hazard; not a robot simulator."""
 
     def __init__(self, seed=0, noise=0.0, horizon=48):
-        if noise < 0 or not np.isfinite(noise) or horizon < 1:
+        if noise < 0 or not np.isfinite(noise) or type(horizon) is not int or horizon < 1:
             raise ValueError("Invalid noise or horizon")
         self.rng = np.random.default_rng(seed)
         self.noise, self.horizon = noise, horizon
@@ -52,9 +52,12 @@ class Navigation:
     def reset(self):
         self.position = np.array([-0.8, -0.8], dtype=np.float32) + self.rng.normal(0, 0.03, 2)
         self.steps = 0
+        self.terminated = False
         return self.observation()
 
     def step(self, action):
+        if self.terminated:
+            raise ValueError("Episode has ended; call reset before stepping again")
         action = np.asarray(action)
         if action.shape != (2,) or not np.isfinite(action).all():
             raise ValueError("Expected a finite two-dimensional action")
@@ -68,11 +71,12 @@ class Navigation:
         cost = float(np.linalg.norm(self.position) < 0.32)
         success = distance < 0.12
         self.steps += 1
+        self.terminated = bool(success or self.steps >= self.horizon)
         return (
             self.observation(),
             float(previous - distance - 0.01 + success),
             cost,
-            bool(success or self.steps >= self.horizon),
+            self.terminated,
         )
 
 

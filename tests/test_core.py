@@ -83,3 +83,15 @@ def test_noise_conditions_are_summarized_separately():
     )
     assert report[0]["episodes"] == 1
     assert report[1]["mean_reward"] == 2 and report[1]["violation_rate"] == 0.5
+
+
+def test_completed_episodes_require_reset():
+    import pytest
+
+    env = Navigation(horizon=1)
+    assert env.step([0, 0])[-1]
+    with pytest.raises(ValueError, match="reset"):
+        env.step([0, 0])
+    env.reset()
+    assert env.steps == 0 and not env.terminated
+    assert env.step([0, 0])[-1]
