@@ -102,3 +102,10 @@ The installed `riskweave-artifacts` command offers the same interface. Use fresh
 Metric summaries accept JSON arrays, single objects, reports containing `rows` or `episodes`, and streamed JSONL. They summarize numeric fields with population standard deviation and ignore boolean/nonnumeric fields. CSV export accepts flat scalar records; nested data must be transformed first. Comparisons report signed changes, without assuming whether larger values are better. Relative change is null when the baseline is zero.
 
 Bootstrap intervals assume independent observations. Correlated training steps or snapshots from the same run are not independent experimental repetitions; aggregate by run before interpreting an interval. These intervals do not calibrate model uncertainty.
+
+
+## Controlled policy experiments
+
+Training accepts `--learning-rate`, `--gamma`, `--radius`, `--samples`, `--initial-penalty`, and `--penalty-rate`. All settings are recorded in the run configuration. Defaults preserve the initial prototype. Set `--radius 0` for an uncertainty-radius ablation or `--penalty-rate 0` to hold the dual multiplier fixed; these choices change the experiment and do not establish safety.
+
+Evaluation includes a `by_noise` summary and per-episode `success` and `steps`. A low cost can result from failure to reach the goal, so inspect success and reward alongside violations. The navigation environment rejects steps after termination until `reset()` is called.
