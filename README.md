@@ -109,3 +109,8 @@ Bootstrap intervals assume independent observations. Correlated training steps o
 Training accepts `--learning-rate`, `--gamma`, `--radius`, `--samples`, `--initial-penalty`, and `--penalty-rate`. All settings are recorded in the run configuration. Defaults preserve the initial prototype. Set `--radius 0` for an uncertainty-radius ablation or `--penalty-rate 0` to hold the dual multiplier fixed; these choices change the experiment and do not establish safety.
 
 Evaluation includes a `by_noise` summary and per-episode `success` and `steps`. A low cost can result from failure to reach the goal, so inspect success and reward alongside violations. The navigation environment rejects steps after termination until `reset()` is called.
+
+
+## Experiment analysis
+
+`riskweave-analysis` (or `python -m riskweave.analysis_cli`) provides distribution reports, matched-run comparisons, grouped summaries, and training-curve diagnostics. Reports include input-file SHA-256 fingerprints. See [ANALYSIS.md](ANALYSIS.md) for runnable examples, the Python API, statistical assumptions, and interpretation limits. These tools analyze saved observations; they do not constitute new model benchmark results.
